@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UpaymentSDK</string>
+    <string name="payment_selection">Please select Payment Source</string>
+
+</resources>
