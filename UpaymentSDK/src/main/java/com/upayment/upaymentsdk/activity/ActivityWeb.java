@@ -48,7 +48,6 @@ public class ActivityWeb  extends AppCompatActivity {
 
 
     private boolean status;
-
     private UPaymentCallBack uPaymentCallBack= null;
    private  String key_s_url=null;
    private String key_e_url=null;
