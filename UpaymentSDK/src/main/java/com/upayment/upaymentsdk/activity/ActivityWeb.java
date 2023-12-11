@@ -316,7 +316,9 @@ public class ActivityWeb  extends AppCompatActivity {
             if(url!=null){
 
                 try {
-                    if(url.contains("http://dev-apiv2api.upayments.com/get-pay-by-samsung")) {
+                    //https://apiv2api.upayments.com/get-pay-by-samsung?order_id=o4SH0e022077v41371Vc10O2751Of824&track_id=0252f91u09182192r2050M19260323552223N553&transaction_id=2670134&ref_id=16590634
+                    // &currency=KWD&amount=0.010&success_url=https://upayments.com/en/&failure_url=https://error.com
+                    if(url.contains("http://dev-apiv2api.upayments.com/get-pay-by-samsung")|| url.contains("https://apiv2api.upayments.com/get-pay-by-samsung")) {
 
                         showSamsung1(url);
 

@@ -41,16 +41,16 @@ class HttpPostRequest {
                 var urlTest:URL ?= null
                 var url: URL? = null
                 URLEncoder.encode(
-                    UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TGET
+                    UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET
 
                 )
                 if (properties.is_whitelabled)
                     url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TGET)
+                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET)
 
                 else {
                     url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TGET)
+                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET)
 
                 }
                 val conn = url!!.openConnection() as HttpURLConnection
@@ -912,16 +912,16 @@ class HttpPostRequest {
                 var urlTest:URL ?= null
                 var url: URL? = null
                 URLEncoder.encode(
-                    UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN
+                    UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN
 
                 )
                 if (isWhitelabled)
                     url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN)
+                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN)
 
                 else {
                     url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN)
+                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN)
 
                 }
                 val conn = url!!.openConnection() as HttpURLConnection
