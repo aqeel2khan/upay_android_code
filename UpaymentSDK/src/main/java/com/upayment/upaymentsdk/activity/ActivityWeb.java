@@ -418,7 +418,7 @@ public class ActivityWeb  extends AppCompatActivity {
                      //   showSamsung1(url);
 
                       //  Toast.makeText(ActivityWeb.this, url, Toast.LENGTH_SHORT).show();
-//                        return ;
+                      return ;
                     }else{
 
                     }
