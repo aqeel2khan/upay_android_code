@@ -3,6 +3,7 @@ package com.upayment.upaymentsdk.activity;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -231,15 +233,28 @@ public class ActivityWeb  extends AppCompatActivity {
 //        }
 //
 //    });
+
         webView.setWebChromeClient(new WebChromeClient());
 
-
         webView.loadUrl(urlLoad);
+        webView.addJavascriptInterface(new WebAppInterface(this), "Android");
 
 
+    }
 
+    public class WebAppInterface {
+        Context mContext;
 
+        /** Instantiate the interface and set the context. */
+        WebAppInterface(Context c) {
+            mContext = c;
+        }
 
+        /** Show a toast from the web page. */
+        @JavascriptInterface
+        public void showToast(String toast) {
+            Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show();
+        }
     }
 
 
@@ -270,7 +285,6 @@ public class ActivityWeb  extends AppCompatActivity {
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
 //            if(url.toString().contains("http://dev-apiv2api.upayments.com/get-pay-by-samsung")){
-//
 //                showSamsung(url.toString());
 //                return true;
 //            }
