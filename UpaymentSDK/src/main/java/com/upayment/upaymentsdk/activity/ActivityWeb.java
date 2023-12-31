@@ -418,6 +418,8 @@ public class ActivityWeb  extends AppCompatActivity {
 
     private void parseData(final String url) {
 
+
+
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -503,7 +505,7 @@ public class ActivityWeb  extends AppCompatActivity {
                                 finish();
                             }
                         }, 500);
-                    } else if (url.contains("result") && url.contains("result=NOT CAPTURED")) {
+                    } else if (url.contains("result") && url.contains("result=NOT CAPTURED") || url.contains("NOT%20CAPTURED")) {
                         {
                             shouldOverride = true;
                             UpaymentGatewayLog.d("-> Not  Captured !"+ url.toString(),true);

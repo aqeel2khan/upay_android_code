@@ -45,6 +45,7 @@ public class UpaymentGateway {
 
     static String sdk_merchant_id="";
     static String sdk_api_key="";
+    static String sdk_sandbox_production_key="";
 
 
     protected Handler mUiHandler = new Handler(Looper.getMainLooper()) {
@@ -71,10 +72,12 @@ public class UpaymentGateway {
     }
 
    // sdk_merchant_id = key  , api_key=  sdk_api_key1
-    public static void init(Context context,String merchant_id,String api_key, boolean token) {
+    public static void init(Context context,String merchant_id,String api_key, boolean token,String sandboxProduction) {
         UpaymentGatewayLog.LOG_ENABLED = token;
         sdk_merchant_id=merchant_id;
         sdk_api_key=api_key;
+        sdk_sandbox_production_key = sandboxProduction;
+
 
         UpaymentGatewayLog.e("Install process inside first init");
 
@@ -95,6 +98,9 @@ public class UpaymentGateway {
         mAdoDomain = UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME+ UpaymentGatewayAppUtils.SLASH+ UpaymentGatewayAppUtils.TGET;
         upaymentGatewayAppPreferences = new UpaymentGatewayAppPreferences(context);
             init(sdk_api_key);
+
+        upaymentGatewayAppPreferences.putString(UpaymentGatewayAppUtils.KEY_SANDBOX_VS_PRODUCTION,sandboxProduction);
+
     }
     private static void init(final String auth_header_token) {
         ArrayList<String> arrayList= new ArrayList<>();

@@ -40,19 +40,43 @@ class HttpPostRequest {
             try {
                 var urlTest:URL ?= null
                 var url: URL? = null
-                URLEncoder.encode(
-                    UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET
 
-                )
-                if (properties.is_whitelabled)
-                    url =
-                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET)
-
-                else {
-                    url =
-                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET)
+                var envoronmentKey= UpaymentGateway.sdk_sandbox_production_key
+                if(envoronmentKey.isNullOrEmpty()){
+                    envoronmentKey = UpaymentGateway.upaymentGatewayAppPreferences.getString(
+                        UpaymentGatewayAppUtils.KEY_SANDBOX_VS_PRODUCTION,
+                        ""
+                    )
 
                 }
+
+                if(envoronmentKey.isEmpty() || envoronmentKey.equals("1")){
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET
+
+                    )
+                    url = if (properties.is_whitelabled) {
+                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET)
+                    } else {
+                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET)
+
+                    }
+
+                }else{
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TGET
+
+                    )
+                    url = if (properties.is_whitelabled) {
+                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TGET)
+                    } else {
+                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TGET)
+
+                    }
+
+                }
+
+
                 val conn = url!!.openConnection() as HttpURLConnection
                 // Set the request method to POST
                 conn.requestMethod = "POST"
@@ -190,20 +214,48 @@ class HttpPostRequest {
             try {
                 var url: URL? = null
 
-
-                URLEncoder.encode(
-                    UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.BASEURL2 + UpaymentGatewayAppUtils.SLASH +UpaymentGatewayAppUtils.TGET_LIST+UpaymentGatewayAppUtils.QUERRY+UpaymentGatewayAppUtils.SOURCE+source
-
-                )
-                if (properties.is_whitelabled)
-                    url =
-                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.BASEURL2 + UpaymentGatewayAppUtils.SLASH +UpaymentGatewayAppUtils.TGET_LIST+UpaymentGatewayAppUtils.QUERRY+UpaymentGatewayAppUtils.SOURCE+source)
-
-                else {
-                    url =
-                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.BASEURL2 + UpaymentGatewayAppUtils.SLASH +UpaymentGatewayAppUtils.TGET_LIST +UpaymentGatewayAppUtils.QUERRY+UpaymentGatewayAppUtils.SOURCE+source)
+                var envoronmentKey= UpaymentGateway.sdk_sandbox_production_key
+                if(envoronmentKey.isNullOrEmpty()){
+                    envoronmentKey = UpaymentGateway.upaymentGatewayAppPreferences.getString(
+                        UpaymentGatewayAppUtils.KEY_SANDBOX_VS_PRODUCTION,
+                        ""
+                    )
 
                 }
+
+                if(envoronmentKey.isEmpty() || envoronmentKey.equals("1")){
+
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.BASEURL2 + UpaymentGatewayAppUtils.SLASH +UpaymentGatewayAppUtils.TGET_LIST+UpaymentGatewayAppUtils.QUERRY+UpaymentGatewayAppUtils.SOURCE+source
+
+                    )
+                    if (properties.is_whitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.BASEURL2 + UpaymentGatewayAppUtils.SLASH +UpaymentGatewayAppUtils.TGET_LIST+UpaymentGatewayAppUtils.QUERRY+UpaymentGatewayAppUtils.SOURCE+source)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.BASEURL2 + UpaymentGatewayAppUtils.SLASH +UpaymentGatewayAppUtils.TGET_LIST +UpaymentGatewayAppUtils.QUERRY+UpaymentGatewayAppUtils.SOURCE+source)
+
+                    }
+                }else{
+
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.BASEURL2 + UpaymentGatewayAppUtils.SLASH +UpaymentGatewayAppUtils.TGET_LIST+UpaymentGatewayAppUtils.QUERRY+UpaymentGatewayAppUtils.SOURCE+source
+
+                    )
+                    if (properties.is_whitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.BASEURL2 + UpaymentGatewayAppUtils.SLASH +UpaymentGatewayAppUtils.TGET_LIST+UpaymentGatewayAppUtils.QUERRY+UpaymentGatewayAppUtils.SOURCE+source)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.BASEURL2 + UpaymentGatewayAppUtils.SLASH +UpaymentGatewayAppUtils.TGET_LIST +UpaymentGatewayAppUtils.QUERRY+UpaymentGatewayAppUtils.SOURCE+source)
+
+                    }
+                }
+
+
 
              //   url = URL("https://apiv2api.upayments.com/api/v1/check-payment-button-status?source=sdk")
 
@@ -270,19 +322,50 @@ class HttpPostRequest {
                 val objData=  JSONObject()
                 var urlTest:URL ?= null
                 var url: URL? = null
-                URLEncoder.encode(
-                    UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_SINGLE_REFUND
 
-                )
-                if (isWhitelabled)
-                    url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_SINGLE_REFUND)
-
-                else {
-                    url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_SINGLE_REFUND)
+                var envoronmentKey= UpaymentGateway.sdk_sandbox_production_key
+                if(envoronmentKey.isNullOrEmpty()){
+                    envoronmentKey = UpaymentGateway.upaymentGatewayAppPreferences.getString(
+                        UpaymentGatewayAppUtils.KEY_SANDBOX_VS_PRODUCTION,
+                        ""
+                    )
 
                 }
+
+                if(envoronmentKey.isEmpty() || envoronmentKey.equals("1")){
+
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_SINGLE_REFUND
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(  UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_SINGLE_REFUND)
+
+                    else {
+                        url =
+                            URL( UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_SINGLE_REFUND)
+
+                    }
+                }else{
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TPOST_SINGLE_REFUND
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(  UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TPOST_SINGLE_REFUND)
+
+                    else {
+                        url =
+                            URL( UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TPOST_SINGLE_REFUND)
+
+                    }
+
+                }
+
+
+
                 val conn = url!!.openConnection() as HttpURLConnection
                 // Set the request method to POST
                 conn.requestMethod = "POST"
@@ -421,19 +504,49 @@ class HttpPostRequest {
                 val objData=  JSONObject()
                 var urlTest:URL ?= null
                 var url: URL? = null
-                URLEncoder.encode(
-                    UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_SINGLE_DELETE_REFUND
 
-                )
-                if (isWhitelabled)
-                    url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_SINGLE_DELETE_REFUND)
-
-                else {
-                    url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_SINGLE_DELETE_REFUND)
+                var envoronmentKey= UpaymentGateway.sdk_sandbox_production_key
+                if(envoronmentKey.isNullOrEmpty()){
+                    envoronmentKey = UpaymentGateway.upaymentGatewayAppPreferences.getString(
+                        UpaymentGatewayAppUtils.KEY_SANDBOX_VS_PRODUCTION,
+                        ""
+                    )
 
                 }
+
+                if(envoronmentKey.isEmpty() || envoronmentKey.equals("1")){
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_SINGLE_DELETE_REFUND
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_SINGLE_DELETE_REFUND)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_SINGLE_DELETE_REFUND)
+
+                    }
+
+                }else{
+
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TPOST_SINGLE_DELETE_REFUND
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TPOST_SINGLE_DELETE_REFUND)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TPOST_SINGLE_DELETE_REFUND)
+
+                    }
+                }
+
+
                 val conn = url!!.openConnection() as HttpURLConnection
                 // Set the request method to POST
                 conn.requestMethod = "POST"
@@ -554,19 +667,49 @@ class HttpPostRequest {
                 val objData=  JSONObject()
                 var urlTest:URL ?= null
                 var url: URL? = null
-                URLEncoder.encode(
-                    UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND
 
-                )
-                if (isWhitelabled)
-                    url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND)
-
-                else {
-                    url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND)
+                var envoronmentKey= UpaymentGateway.sdk_sandbox_production_key
+                if(envoronmentKey.isNullOrEmpty()){
+                    envoronmentKey = UpaymentGateway.upaymentGatewayAppPreferences.getString(
+                        UpaymentGatewayAppUtils.KEY_SANDBOX_VS_PRODUCTION,
+                        ""
+                    )
 
                 }
+
+                if(envoronmentKey.isEmpty() || envoronmentKey.equals("1")){
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND)
+
+                    }
+
+                }else{
+
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND)
+
+                    }
+                }
+
+
                 val conn = url!!.openConnection() as HttpURLConnection
                 // Set the request method to POST
                 conn.requestMethod = "POST"
@@ -672,19 +815,49 @@ class HttpPostRequest {
                 val objData=  JSONObject()
                 var urlTest:URL ?= null
                 var url: URL? = null
-                URLEncoder.encode(
-                    UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND_DELETE
 
-                )
-                if (isWhitelabled)
-                    url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND_DELETE)
-
-                else {
-                    url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND_DELETE)
+                var envoronmentKey= UpaymentGateway.sdk_sandbox_production_key
+                if(envoronmentKey.isNullOrEmpty()){
+                    envoronmentKey = UpaymentGateway.upaymentGatewayAppPreferences.getString(
+                        UpaymentGatewayAppUtils.KEY_SANDBOX_VS_PRODUCTION,
+                        ""
+                    )
 
                 }
+
+                if(envoronmentKey.isEmpty() || envoronmentKey.equals("1")){
+
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND_DELETE
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND_DELETE)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND_DELETE)
+
+                    }
+                }else{
+
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND_DELETE
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND_DELETE)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TPOST_MULTIPLE_REFUND_DELETE)
+
+                    }
+                }
+
+
                 val conn = url!!.openConnection() as HttpURLConnection
                 // Set the request method to POST
                 conn.requestMethod = "POST"
@@ -791,19 +964,50 @@ class HttpPostRequest {
                 val objData=  JSONObject()
                 var urlTest:URL ?= null
                 var url: URL? = null
-                URLEncoder.encode(
-                    UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_ADD_CARDS
 
-                )
-                if (isWhitelabled)
-                    url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_ADD_CARDS)
-
-                else {
-                    url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TPOST_ADD_CARDS)
+                var envoronmentKey= UpaymentGateway.sdk_sandbox_production_key
+                if(envoronmentKey.isNullOrEmpty()){
+                    envoronmentKey = UpaymentGateway.upaymentGatewayAppPreferences.getString(
+                        UpaymentGatewayAppUtils.KEY_SANDBOX_VS_PRODUCTION,
+                        ""
+                    )
 
                 }
+
+                if(envoronmentKey.isEmpty() || envoronmentKey.equals("1")){
+
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_ADD_CARDS
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_ADD_CARDS)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_ADD_CARDS)
+
+                    }
+
+                }else{
+
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TPOST_ADD_CARDS
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_ADD_CARDS)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TPOST_ADD_CARDS)
+
+                    }
+                }
+
+
                 val conn = url!!.openConnection() as HttpURLConnection
                 // Set the request method to POST
                 conn.requestMethod = "POST"
@@ -911,19 +1115,50 @@ class HttpPostRequest {
 
                 var urlTest:URL ?= null
                 var url: URL? = null
-                URLEncoder.encode(
-                    UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN
 
-                )
-                if (isWhitelabled)
-                    url =
-                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN)
-
-                else {
-                    url =
-                        URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN)
+                var envoronmentKey= UpaymentGateway.sdk_sandbox_production_key
+                if(envoronmentKey.isNullOrEmpty()){
+                    envoronmentKey = UpaymentGateway.upaymentGatewayAppPreferences.getString(
+                        UpaymentGatewayAppUtils.KEY_SANDBOX_VS_PRODUCTION,
+                        ""
+                    )
 
                 }
+
+                if(envoronmentKey.isEmpty() || envoronmentKey.equals("1")){
+
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN)
+
+                    }
+
+                }else{
+
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TGET_UNIQUE_TOKEN)
+
+                    }
+                }
+
+
                 val conn = url!!.openConnection() as HttpURLConnection
                 // Set the request method to POST
                 conn.requestMethod = "POST"
@@ -1025,22 +1260,52 @@ class HttpPostRequest {
 
             var response = ""
             try {
-
                 var urlTest:URL ?= null
                 var url: URL? = null
-                URLEncoder.encode(
-                    UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TGET_RETRIVE_CARD
-
-                )
-                if (isWhitelabled)
-                    url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TGET_RETRIVE_CARD)
-
-                else {
-                    url =
-                        URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME + UpaymentGatewayAppUtils.SLASH + UpaymentGatewayAppUtils.TGET_RETRIVE_CARD)
+                var envoronmentKey= UpaymentGateway.sdk_sandbox_production_key
+                if(envoronmentKey.isNullOrEmpty()){
+                    envoronmentKey = UpaymentGateway.upaymentGatewayAppPreferences.getString(
+                        UpaymentGatewayAppUtils.KEY_SANDBOX_VS_PRODUCTION,
+                        ""
+                    )
 
                 }
+
+                if(envoronmentKey.isEmpty() || envoronmentKey.equals("1")){
+
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET_RETRIVE_CARD
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET_RETRIVE_CARD)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT + UpaymentGatewayAppUtils.TGET_RETRIVE_CARD)
+
+                    }
+
+                }else{
+
+                    URLEncoder.encode(
+                        UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TGET_RETRIVE_CARD
+
+                    )
+                    if (isWhitelabled)
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TGET_RETRIVE_CARD)
+
+                    else {
+                        url =
+                            URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT_SANDBOX + UpaymentGatewayAppUtils.TGET_RETRIVE_CARD)
+
+                    }
+                }
+
+
+
                 val conn = url!!.openConnection() as HttpURLConnection
                 // Set the request method to POST
                 conn.requestMethod = "POST"

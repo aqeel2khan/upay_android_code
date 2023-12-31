@@ -63,12 +63,12 @@ class UpaymentGatewayHttpClient {
             }
             String urlTest= "";
             URL url=null;
-                URLEncoder.encode(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME+ UpaymentGatewayAppUtils.SLASH+ UpaymentGatewayAppUtils.TGET,"UTF-8");
-                 urlTest = UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME+ UpaymentGatewayAppUtils.SLASH+ UpaymentGatewayAppUtils.TGET;
+                URLEncoder.encode(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT+ UpaymentGatewayAppUtils.TGET,"UTF-8");
+                 urlTest = UpaymentGatewayAppUtils.BASEURLLISTPAYMENT+ UpaymentGatewayAppUtils.TGET;
 
             UpaymentGatewayLog.d("->url final : " + urlTest);
 
-                 url = new URL(UpaymentGatewayAppUtils.ABC + UpaymentGatewayAppUtils.NAME+ UpaymentGatewayAppUtils.SLASH+ UpaymentGatewayAppUtils.TGET);
+                 url = new URL(UpaymentGatewayAppUtils.BASEURLLISTPAYMENT+ UpaymentGatewayAppUtils.TGET);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setConnectTimeout(mTimeOut);

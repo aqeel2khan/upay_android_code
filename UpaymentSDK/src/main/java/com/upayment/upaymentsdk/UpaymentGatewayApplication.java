@@ -12,6 +12,6 @@ public class UpaymentGatewayApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-     UpaymentGateway.init(this,"","",true);
+     UpaymentGateway.init(this,"","",true,"1");
     }
 }

@@ -12,13 +12,14 @@ object UpaymentGatewayAppUtils {
 
     const val KEY_SAVE_EVENT = "SENT_EVENT"
     const val KEY_HEADER_TOKEN = "header_token"
+ const val KEY_SANDBOX_VS_PRODUCTION = "sandbox_Production"
 
     const val ABC = "https://"
 
     // Production
     const val BASEURLLISTPAYMENT="https://apiv2api.upayments.com/"
-    // dev
-//    const val BASEURLLISTPAYMENT="https://dev-apiv2api.upayments.com/"
+    // SandBox  : https://sandboxapi.upayments.com/api/v1/charge
+    const val BASEURLLISTPAYMENT_SANDBOX="https://sandboxapi.upayments.com/"
 
     const val BASEURL2="api/v1"
 
