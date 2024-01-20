@@ -17,7 +17,7 @@ import com.upayment.upaymentsdk.track.CreateInvoiceResponse
 import com.upayment.upaymentsdk.track.UpaymentGateway
 import com.upayment.upaymentsdk.track.card.addCardcustomer
 import com.upayment.upaymentsdk.track.card.addcard.ResponseAddCard
-import com.upayment.upaymentsdk.track.card.customer
+//import com.upayment.upaymentsdk.track.card.customer
 import com.upayment.upaymentsdk.track.card.retrive.ResponseRetriveCard
 
 import com.upayment.upaymentsdk.track.charge.upaymentGatewayEvent3
