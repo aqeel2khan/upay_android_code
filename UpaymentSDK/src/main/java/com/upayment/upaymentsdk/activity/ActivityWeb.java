@@ -732,28 +732,39 @@ public class ActivityWeb  extends AppCompatActivity {
         if (webView.canGoBack()) {
             webView.goBack();
         } else {
+            returnBack();
             super.onBackPressed();
         }
-//        String payMentId=   "cancel";
-//        String Result=    "CANCELED";
-//        String PostDate=    "";
-//        String TranID=    "";
-//        String Ref=    "";
-//        String TrackID=   "";
-//        String OrderID=    "";
-//        String cust_ref=    "";
-//
-//        PostUpayData postUpayData= new PostUpayData(payMentId,Result,PostDate,TranID
-//                ,Ref,TrackID,OrderID,cust_ref);
-//
-//        uPaymentCallBack.callBackUpayment(postUpayData);
+
         finish();
+    }
+
+    private void returnBack() {
+        String payMentId = "cancel";
+        String Result = "CANCELED";
+        String PostDate = "";
+        String TranID = "";
+        String Ref = "";
+        String TrackID = "";
+        String OrderID = "";
+        String cust_ref = "";
+        String Auth = "";
+        String payment_type= "";
+        String refund_order_id= "";
+        PostUpayData postUpayData = new PostUpayData(payMentId, Result, PostDate, TranID
+                , Ref, TrackID, OrderID, cust_ref, payment_type, Auth,refund_order_id);
+        if (!successPost) {
+            uPaymentCallBack.callBackUpayment(postUpayData);
+            successPost = true;
+        }
+
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KeyEvent.KEYCODE_BACK) && this.webView.canGoBack()) {
            // this.webView.goBack();
+            returnBack();
             webView.goBack();
             finish();
             return true;
