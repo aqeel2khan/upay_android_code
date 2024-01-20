@@ -3,13 +3,13 @@ package com.upayment.upaymentsdk.track
 import android.annotation.SuppressLint
 import android.os.Handler
 import com.google.gson.Gson
-import com.upayment.upaymentsdk.track.card.Customer
+import com.upayment.upaymentsdk.track.card.AddCardCustomer
 import com.upayment.upaymentsdk.track.customertoken.PostCustomerToken
 import com.upayment.upaymentsdk.util.PreferenceHelper
 import com.upayment.upaymentsdk.util.PreferenceHelper.customerToken
 
 class UpaymentGatewayAddCardsTrack (
-    var properties: Customer,
+    var properties: AddCardCustomer,
     var handler: Handler?,
     var is_whitelabled: Boolean
 ) :Runnable {

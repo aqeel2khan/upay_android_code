@@ -6,7 +6,7 @@ import android.os.Looper
 import android.text.TextUtils
 import com.google.gson.Gson
 import com.upayment.upaymentsdk.activity.ActivityWeb
-import com.upayment.upaymentsdk.track.card.Customer
+import com.upayment.upaymentsdk.track.card.AddCardCustomer
 import com.upayment.upaymentsdk.track.card.addcard.ResponseAddCard
 import com.upayment.upaymentsdk.track.card.retrive.ResponseRetriveCard
 import com.upayment.upaymentsdk.track.charge.UpaymentGatewayEvent3
@@ -956,7 +956,7 @@ class HttpPostRequest {
             return response
         }
 
-        fun postAddCards(postData: String, isWhitelabled: Boolean, properties: Customer):String {
+        fun postAddCards(postData: String, isWhitelabled: Boolean, properties: AddCardCustomer):String {
 
             var response = ""
             try {

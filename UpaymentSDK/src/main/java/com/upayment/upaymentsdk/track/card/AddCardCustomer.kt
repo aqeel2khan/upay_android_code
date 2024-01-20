@@ -2,7 +2,7 @@ package com.upayment.upaymentsdk.track.card
 
 data class Expiry(val month: String, val year: String)
 data class Card(val number: String, val expiry: Expiry, val securityCode: String, val nameOnCard: String)
-data class Customer(val card: Card, var customerUniqueToken: Long)
+data class AddCardCustomer(val card: Card, var customerUniqueToken: Long)
 
 class ExpiryBuilder {
     var month: String = ""
@@ -37,13 +37,13 @@ class CustomerBuilder {
         card = block
     }
 
-    fun build(): Customer {
+    fun build(): AddCardCustomer {
         val cardBuilder = CardBuilder().apply(card)
-        return Customer(cardBuilder.build(), customerUniqueToken)
+        return AddCardCustomer(cardBuilder.build(), customerUniqueToken)
     }
 }
 
-fun customer(block: CustomerBuilder.() -> Unit): Customer {
+fun addCardcustomer(block: CustomerBuilder.() -> Unit): AddCardCustomer {
     return CustomerBuilder().apply(block).build()
 }
 

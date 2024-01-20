@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import com.google.gson.Gson;
 import com.upayment.upaymentsdk.UPaymentCallBack;
 import com.upayment.upaymentsdk.activity.PaymentSrcListSelection;
+import com.upayment.upaymentsdk.track.card.AddCardCustomer;
 import com.upayment.upaymentsdk.track.card.Customer;
 import com.upayment.upaymentsdk.track.charge.UpaymentGatewayEvent3;
 import com.upayment.upaymentsdk.track.customertoken.PostCustomerToken;
@@ -373,7 +374,7 @@ public class UpaymentGateway {
         }
     }
 
-    public void trackAddCards(final Customer customer , UPaymentCallBack callBack,Boolean is_whitelabled )  {
+    public void trackAddCards(final AddCardCustomer customer , UPaymentCallBack callBack, Boolean is_whitelabled )  {
         UpaymentGatewayLog.d("track process 3");
         try {
 

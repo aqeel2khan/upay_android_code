@@ -15,6 +15,7 @@ import com.upayment.upaymentsdk.UPaymentCallBack
 import com.upayment.upaymentsdk.activity.PostUpayData
 import com.upayment.upaymentsdk.track.CreateInvoiceResponse
 import com.upayment.upaymentsdk.track.UpaymentGateway
+import com.upayment.upaymentsdk.track.card.addCardcustomer
 import com.upayment.upaymentsdk.track.card.addcard.ResponseAddCard
 import com.upayment.upaymentsdk.track.card.customer
 import com.upayment.upaymentsdk.track.card.retrive.ResponseRetriveCard
@@ -567,7 +568,7 @@ class TestKotlin : AppCompatActivity(), UPaymentCallBack, OnClickListener {
     }
 
     private fun callAddCard() {
-        val customer = customer {
+        val customer = addCardcustomer {
             card {
                 number = "5123450000000008"
                 expiry {
