@@ -111,6 +111,7 @@
       android:textColor="@color/white"
       android:background="#808080"
       android:gravity="center"
+      android:visibility="gone"
       android:text="Create Token"></TextView>
 
   <TextView
